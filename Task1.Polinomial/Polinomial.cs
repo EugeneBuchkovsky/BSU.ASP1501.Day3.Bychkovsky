@@ -172,7 +172,7 @@ namespace Task1.Polinomial
         {
             get
             {
-                if (index < 0 || index > CoefficientArray.Length)
+                if (index < 0 || index > CoefficientArray.Length-1)
                     throw new ArgumentOutOfRangeException();
                 return CoefficientArray[index];
             }
