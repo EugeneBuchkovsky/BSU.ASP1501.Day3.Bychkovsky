@@ -15,7 +15,7 @@ namespace Task1.Polinomial
 
         public Polinomial(params double[] source)
         {
-            CoefficientArray = source;
+            this.CoefficientArray = (double[])source.Clone();
         }
 
         
@@ -27,6 +27,12 @@ namespace Task1.Polinomial
         /// <returns></returns>
         public static Polinomial Add(Polinomial x, Polinomial y)
         {
+            /*if (x == null && y == null)
+                throw new ArgumentNullException();
+            if (x == null && y != null)
+                return new Polinomial(y.CoefficientArray);
+            if (x != null && y == null)
+                return new Polinomial(x.CoefficientArray);*/
             return new Polinomial(SumPolynom(x.CoefficientArray, y.CoefficientArray));
         }
 
@@ -162,6 +168,16 @@ namespace Task1.Polinomial
             return temp.ToString();
         }
 
+        public double this[int index]
+        {
+            get
+            {
+                if (index < 0 || index > CoefficientArray.Length)
+                    throw new ArgumentOutOfRangeException();
+                return CoefficientArray[index];
+            }
+        }
+       
         /// <summary>
         /// Method summation arrays-polinomias.
         /// </summary>
